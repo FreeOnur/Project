@@ -171,8 +171,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 2
   range: 100
+  impactForce: 30
+  fireRate: 2
   fpscamera: {fileID: 497144466}
   muzzleFlash: {fileID: 2067680578}
+  impactEffect: {fileID: 7226583673155636401, guid: 9732394942db8a941839032f36b37e33, type: 3}
 --- !u!1 &308230278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2241,7 +2244,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.8
+      scalar: 0.4
       minScalar: 0.2
       maxCurve:
         serializedVersion: 2
