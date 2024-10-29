@@ -38,8 +38,19 @@ public class PlayerMovement : MonoBehaviour
             // v = Wurzel aus h*-2*g     h = wie hoch man springen soll g ist ein Gravitationskraft
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            speed = 5.0f;
+        }else if(Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speed = 12f;
+        }
+
+        
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+
+        
     }
 }
