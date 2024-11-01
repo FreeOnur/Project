@@ -10,6 +10,7 @@ public class Gun : MonoBehaviour
     public float range = 100f;
     public float impactForce = 30f;
     public float fireRate = 2f;
+    public KeyCode shootKey = KeyCode.Mouse0;
     
     public Camera fpscamera;
     public ParticleSystem muzzleFlash;
@@ -22,7 +23,7 @@ public class Gun : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
+        if (Input.GetKey(shootKey) && Time.time >= nextTimeToFire)
         {
             // Time.time = current time
             nextTimeToFire = Time.time + 1f/fireRate;
@@ -34,8 +35,8 @@ public class Gun : MonoBehaviour
 
     void Shoot()
     {
-        
 
+        
         RaycastHit hit;
         if (Physics.Raycast(fpscamera.transform.position, fpscamera.transform.forward, out hit, range))
         {
