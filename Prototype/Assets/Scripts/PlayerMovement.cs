@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float walkSpeed;
     public float sprintSpeed = 12f;
     [Header("Jumping")]
-    public float gravity = -9.81f *2;
+    public float gravity = -9.81f * 2;
     Vector3 velocity;
     public float jumpHeight = 3f;
     // reference what to check
@@ -33,13 +33,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateHandler()
     {
-        if(Input.GetKey(crouchKey))
+        if (Input.GetKey(crouchKey))
         {
             state = MovementState.crouching;
             speed = crouchSpeed;
         }
         // Mode - Sprinting
-        else if(isGrounded && Input.GetKey(sprintKey))
+        else if (isGrounded && Input.GetKey(sprintKey))
         {
             state = MovementState.sprinting;
             speed = sprintSpeed;
@@ -75,19 +75,19 @@ public class PlayerMovement : MonoBehaviour
         // creates tiny sphere to check what it collides with
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if(isGrounded && velocity.y < 0 )
+        if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
-        
+
 
         controller.Move(move() * speed * Time.deltaTime);
-        
+
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        
-        
+
+
     }
     void inputManager()
 
@@ -102,10 +102,10 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(crouchKey))
         {
             controller.height = controller.height - crouchSpeed * Time.deltaTime;
-            
+
         }
         //stop crouching
-        if(Input.GetKeyUp(crouchKey))
+        if (Input.GetKeyUp(crouchKey))
         {
             controller.height = controller.height + crouchSpeed * Time.deltaTime;
         }
