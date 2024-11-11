@@ -11,7 +11,8 @@ public class Gun : MonoBehaviour
     public float impactForce = 30f;
     public float fireRate = 2f;
     public KeyCode shootKey = KeyCode.Mouse0;
-    
+    public bool canShoot = true;
+
     public Camera fpscamera;
     public ParticleSystem muzzleFlash;
     // Datatype Gameobject instead of ParticleSystem because we need to instantiate the impact wherevere the bullet lands
@@ -23,7 +24,7 @@ public class Gun : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKey(shootKey) && Time.time >= nextTimeToFire)
+        if (Input.GetKey(shootKey) && Time.time >= nextTimeToFire && canShoot )
         {
             // Time.time = current time
             nextTimeToFire = Time.time + 1f/fireRate;
